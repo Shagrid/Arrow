@@ -7,8 +7,8 @@ public class ragdoll : MonoBehaviour
     
     void Start()
     {
-        setRigidbodyState(true);
-        setColliderState(false);
+        setRigidbodyState(false);
+        setColliderState(true);
     }
 
     // Update is called once per frame

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ public class Fly : MonoBehaviour
     public float yaw = 0f;
     public float pitch = 0f;
     public bool IsFly = true;
+
+    public SimplePlayer SimplePlayerScript;
     //public  float forceImpule = 10000f;
     //Rigidbody rb;
 
@@ -79,4 +82,10 @@ public class Fly : MonoBehaviour
     //    rb = GetComponent<Rigidbody>();
     //    rb.AddForce(arrow.transform.localPosition * forceImpule, ForceMode.Impulse);
     //}
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("Collision");
+        SimplePlayerScript.OnTriggerEnterRemaster(other.collider);
+    }
 }

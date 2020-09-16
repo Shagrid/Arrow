@@ -60,16 +60,16 @@ public class SimplePlayer : MonoBehaviour
    
         
     //   }
-    void OnTriggerEnter(Collider col)
+    public void OnTriggerEnterRemaster(Collider col)
     {
-        if (col.gameObject.CompareTag("Player"))
-         {
+       // if (col.gameObject.CompareTag("Player"))
+        // {
             StartCoroutine("fsd");
             particleLauncher.enableEmission = false;
             particleLauncher1.enableEmission = false;
             particleLauncher2.enableEmission = false;
             particleDeath.Emit(1);
-            Time.timeScale = 0.3f;
+            Time.timeScale = 0.1f;
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
             obj.GetComponent<Transform>().localScale = new Vector3(x, y, z);
             rt.GetComponent<Fly>().IsFly = false;
@@ -83,7 +83,7 @@ public class SimplePlayer : MonoBehaviour
             //Destroy(rt);
             calldie.die();
             col.transform.localPosition += col.transform.forward * Time.deltaTime * ArrowInBody;
-            rt.transform.SetParent(body);
+            rt.transform.SetParent(col.transform);
             camera.enabled = false;
 
             //AddImpulse();
@@ -101,7 +101,7 @@ public class SimplePlayer : MonoBehaviour
 
             //camera.GetComponent<CameraControl>().enabled = false;
 
-         }
+        // }
     }
 
     public void AddImpulse()
